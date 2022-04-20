@@ -7,7 +7,7 @@ super_user = User.create(
     first_name: "Admin",
     last_name: "User",    
     email: "admin@user.com",
-    password_digest: PASSWORD    
+    password: PASSWORD    
 )
 
 5.times do
@@ -17,7 +17,7 @@ super_user = User.create(
         first_name: first_name,
         last_name: last_name,        
         email: "#{first_name}_#{last_name}@user.com",
-        password_digest: PASSWORD
+        password: PASSWORD
     )
 end
 

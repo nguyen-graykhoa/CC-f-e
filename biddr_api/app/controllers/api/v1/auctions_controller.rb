@@ -1,10 +1,11 @@
 class Api::V1::AuctionsController < Api::ApplicationController
     before_action :find_auction, only: [:show]
-    before_action :authenticate_user!, except: [:index, :show]
+    before_action :authenticate_user!, except: [:index, :show, :create]
 
     def create      
+      #current_user = User.find(19)
       auction = Auction.new(auction_params)
-      auction.user = current_user      
+      auction.user = current_user  
       auction.save!      
       render json: { id: auction.id }
     end
@@ -16,13 +17,16 @@ class Api::V1::AuctionsController < Api::ApplicationController
 
     def show
         # return a single question in json format
-        render(json: @auction)
+        
+        @bids = @auction.bids
+         
+        render(json: {auction: @auction, bids: @bids})
     end
 
     private 
 
     def auction_params
-      params.require(:auctions).permit(:title, :description, :current_price, :bid_end_at)
+      params.require(:auction).permit(:title, :description, :current_price)
     end
 
     def find_auction

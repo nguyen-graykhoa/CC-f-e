@@ -6,13 +6,16 @@ Rails.application.routes.draw do
  
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :auctions, only: [:create, :index, :show]
-      resource :bids, only: [:create]
+      resources :auctions, only: [:create, :index, :show] do
+        resource :bids, only: [:create]
+      end
+       
+      resource :session, only: [:create, :destroy]
       resources :users, only: [:create] do
         # get('users/current', {to: 'users#current'})
         get :current, on: :collection #api/v1/users/current
       end
-      resources :gifts, only: [:create]
+       
     end
   end
 
