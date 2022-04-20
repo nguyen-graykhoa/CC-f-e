@@ -52311,3 +52311,882 @@ Processing by Api::V1::AuctionsController#create as JSON
 Completed 200 OK in 21ms (Views: 0.1ms | ActiveRecord: 10.8ms | Allocations: 4727)
 
 
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:18:34 -0700
+Started GET "/api/v1/auctions" for ::1 at 2022-04-19 20:18:34 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (4.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#current as JSON
+Processing by Api::V1::AuctionsController#index as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 20ms (Views: 0.3ms | ActiveRecord: 6.8ms | Allocations: 18341)
+
+
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:18:34 -0700
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1070)
+
+
+  [1m[36mAuction Load (0.6ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" ORDER BY "auctions"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/auctions_controller.rb:15:in `index'
+Completed 200 OK in 35ms (Views: 2.9ms | ActiveRecord: 15.7ms | Allocations: 29918)
+
+
+Started GET "/api/v1/auctions" for ::1 at 2022-04-19 20:18:34 -0700
+Processing by Api::V1::AuctionsController#index as JSON
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" ORDER BY "auctions"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/auctions_controller.rb:15:in `index'
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.3ms | Allocations: 1434)
+
+
+Started GET "/api/v1/auctions/6" for ::1 at 2022-04-19 20:18:43 -0700
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:18:43 -0700
+Processing by Api::V1::UsersController#current as JSON
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAuction Load (0.4ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 2758)
+
+
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:18:43 -0700
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mBid Load (0.9ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 6]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 16ms (Views: 3.1ms | ActiveRecord: 2.9ms | Allocations: 11900)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 2285)
+
+
+Started GET "/api/v1/auctions/6" for ::1 at 2022-04-19 20:18:43 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.5ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 6]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.7ms | Allocations: 1447)
+
+
+Started GET "/api/v1/auctions/6" for ::1 at 2022-04-19 20:19:39 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.2ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 6]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.5ms | Allocations: 1440)
+
+
+Started GET "/api/v1/auctions/6" for ::1 at 2022-04-19 20:19:41 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.2ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 6]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.5ms | Allocations: 1441)
+
+
+Started GET "/api/v1/auctions" for ::1 at 2022-04-19 20:19:46 -0700
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:19:46 -0700
+Processing by Api::V1::AuctionsController#index as JSON
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mAuction Load (0.5ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" ORDER BY "auctions"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/auctions_controller.rb:15:in `index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.5ms | Allocations: 2315)
+
+
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 2335)
+
+
+Started GET "/api/v1/auctions" for ::1 at 2022-04-19 20:19:46 -0700
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:19:46 -0700
+Processing by Api::V1::AuctionsController#index as JSON
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mAuction Load (0.9ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" ORDER BY "auctions"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/auctions_controller.rb:15:in `index'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.9ms | Allocations: 2236)
+
+
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 2708)
+
+
+Started GET "/api/v1/auctions/3" for ::1 at 2022-04-19 20:19:50 -0700
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:19:50 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"3"}
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mAuction Load (0.5ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mBid Load (0.2ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 3]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms | Allocations: 1808)
+
+
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:19:50 -0700
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 3846)
+
+
+Completed 200 OK in 18ms (Views: 9.3ms | ActiveRecord: 7.1ms | Allocations: 13434)
+
+
+Started GET "/api/v1/auctions/3" for ::1 at 2022-04-19 20:19:50 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.1ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 3]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.4ms | Allocations: 1791)
+
+
+Started GET "/api/v1/auctions" for ::1 at 2022-04-19 20:19:56 -0700
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:19:56 -0700
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1092)
+
+
+Processing by Api::V1::AuctionsController#index as JSON
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" ORDER BY "auctions"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/auctions_controller.rb:15:in `index'
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.3ms | Allocations: 1695)
+
+
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:19:56 -0700
+Started GET "/api/v1/auctions" for ::1 at 2022-04-19 20:19:56 -0700
+Processing by Api::V1::UsersController#current as JSON
+Processing by Api::V1::AuctionsController#index as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 1579)
+
+
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" ORDER BY "auctions"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/auctions_controller.rb:15:in `index'
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.3ms | Allocations: 2491)
+
+
+Started GET "/api/v1/auctions/2" for ::1 at 2022-04-19 20:20:01 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"2"}
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:20:01 -0700
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.2ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 2]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.6ms | Allocations: 2102)
+
+
+Started GET "/api/v1/auctions/2" for ::1 at 2022-04-19 20:20:01 -0700
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1103)
+
+
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"2"}
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:20:01 -0700
+  [1m[36mAuction Load (0.9ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.3ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 2]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 1.2ms | Allocations: 2262)
+
+
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 1065)
+
+
+Started GET "/api/v1/auctions" for ::1 at 2022-04-19 20:20:03 -0700
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:20:03 -0700
+Processing by Api::V1::AuctionsController#index as JSON
+  [1m[36mAuction Load (0.4ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" ORDER BY "auctions"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/auctions_controller.rb:15:in `index'
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.4ms | Allocations: 1672)
+
+
+Started GET "/api/v1/auctions" for ::1 at 2022-04-19 20:20:03 -0700
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1104)
+
+
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:20:03 -0700
+Processing by Api::V1::AuctionsController#index as JSON
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" ORDER BY "auctions"."created_at" DESC[0m
+  ↳ app/controllers/api/v1/auctions_controller.rb:15:in `index'
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.3ms | Allocations: 1633)
+
+
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1075)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:20:10 -0700
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:20:10 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (1.2ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 5ms (Views: 1.5ms | ActiveRecord: 1.5ms | Allocations: 2196)
+
+
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1189)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:20:10 -0700
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:20:10 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mAuction Load (0.6ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mBid Load (0.3ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 1802)
+
+
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.9ms | Allocations: 3674)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:20:59 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.1ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.4ms | Allocations: 1791)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:21:02 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.2ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.5ms | Allocations: 1791)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:21:09 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.1ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.3ms | Allocations: 1793)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:21:15 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.2ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.4ms | Allocations: 1791)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:21:17 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.1ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.1ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms | Allocations: 1791)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:21:18 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.1ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.3ms | Allocations: 1791)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:21:21 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.1ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.3ms | Allocations: 1791)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:22:43 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (4.9ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (28.6ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 39ms (Views: 1.3ms | ActiveRecord: 33.5ms | Allocations: 1792)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:23:10 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (1.9ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 5ms (Views: 1.5ms | ActiveRecord: 2.0ms | Allocations: 1791)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:23:12 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.1ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.3ms | Allocations: 1791)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:23:14 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.3ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.4ms | Allocations: 1791)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:28:46 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.5ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.4ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 19ms (Views: 1.2ms | ActiveRecord: 9.2ms | Allocations: 4129)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:30:15 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.7ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.4ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 1.1ms | Allocations: 1791)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:37:39 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.6ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.4ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 21ms (Views: 1.0ms | ActiveRecord: 11.5ms | Allocations: 4075)
+
+
+Started POST "/api/v1/bids" for ::1 at 2022-04-19 20:38:29 -0700
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/bids"):
+  
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:41:35 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.5ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.3ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 6ms (Views: 2.4ms | ActiveRecord: 0.8ms | Allocations: 1790)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:41:36 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.6ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.9ms | Allocations: 1791)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:41:38 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.1ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.4ms | Allocations: 1791)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:41:48 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.6ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.3ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 6ms (Views: 2.2ms | ActiveRecord: 0.8ms | Allocations: 1791)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:41:50 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.2ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.4ms | Allocations: 1791)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:41:52 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.6ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.3ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 0.9ms | Allocations: 1792)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:48:12 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.4ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.3ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 14ms (Views: 1.4ms | ActiveRecord: 6.3ms | Allocations: 4101)
+
+
+Started POST "/api/v1/auctions/3/bids" for ::1 at 2022-04-19 20:49:13 -0700
+  
+SyntaxError (/Users/khoanguyen-gray/Documents/CodeCore/final_exam/biddr_api/app/controllers/api/v1/bids_controller.rb:7: syntax error, unexpected '}', expecting =>
+    rense json: { bids}
+                      ^
+/Users/khoanguyen-gray/Documents/CodeCore/final_exam/biddr_api/app/controllers/api/v1/bids_controller.rb:26: syntax error, unexpected end-of-input, expecting `end'):
+  
+app/controllers/api/v1/bids_controller.rb:7: syntax error, unexpected '}', expecting =>
+app/controllers/api/v1/bids_controller.rb:26: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/api/v1/bids_controller.rb:7: syntax error, unexpected '}', expecting =>
+app/controllers/api/v1/bids_controller.rb:26: syntax error, unexpected end-of-input, expecting `end'
+app/controllers/api/v1/bids_controller.rb:7: syntax error, unexpected '}', expecting =>
+app/controllers/api/v1/bids_controller.rb:26: syntax error, unexpected end-of-input, expecting `end'
+Started POST "/api/v1/auctions/3/bids" for ::1 at 2022-04-19 20:50:06 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::BidsController#create as JSON
+  Parameters: {"bid"=>{"bid_price"=>"211"}, "auction_id"=>"3"}
+  [1m[36mAuction Load (0.6ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/bids_controller.rb:23:in `find_auction'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+  [1m[36mBid Create (7.5ms)[0m  [1m[32mINSERT INTO "bids" ("bid_price", "user_id", "auction_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["bid_price", 0], ["user_id", 7], ["auction_id", 3], ["created_at", "2022-04-20 03:50:06.212398"], ["updated_at", "2022-04-20 03:50:06.212398"]]
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+Completed 200 OK in 43ms (Views: 0.1ms | ActiveRecord: 22.4ms | Allocations: 32198)
+
+
+Started POST "/api/v1/auctions/undefined/bids" for ::1 at 2022-04-19 20:50:35 -0700
+Processing by Api::V1::BidsController#create as JSON
+  Parameters: {"bid_price"=>"99", "auction_id"=>"undefined", "bid"=>{"bid_price"=>"99"}}
+  [1m[36mAuction Load (0.5ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/bids_controller.rb:23:in `find_auction'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.5ms | Allocations: 965)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Auction with 'id'=undefined):
+  
+app/controllers/api/v1/bids_controller.rb:23:in `find_auction'
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:51:29 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.3ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 5ms (Views: 1.5ms | ActiveRecord: 0.6ms | Allocations: 4672)
+
+
+Started POST "/api/v1/auctions/4/bids" for ::1 at 2022-04-19 20:51:43 -0700
+Processing by Api::V1::BidsController#create as JSON
+  Parameters: {"bid_price"=>"99", "auction_id"=>"4", "bid"=>{"bid_price"=>"99", "auction_id"=>"4"}}
+  [1m[36mAuction Load (0.6ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/bids_controller.rb:23:in `find_auction'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+  [1m[36mAuction Load (1.1ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+  [1m[36mBid Create (0.6ms)[0m  [1m[32mINSERT INTO "bids" ("bid_price", "user_id", "auction_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["bid_price", 99], ["user_id", 1], ["auction_id", 4], ["created_at", "2022-04-20 03:51:43.739734"], ["updated_at", "2022-04-20 03:51:43.739734"]]
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 4.3ms | Allocations: 4024)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:52:20 -0700
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:52:20 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.4ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.5ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.9ms | Allocations: 2942)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:52:20 -0700
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 1169)
+
+
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:52:20 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.1ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.3ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.5ms | Allocations: 1924)
+
+
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1057)
+
+
+Started POST "/api/v1/auctions/4/bids" for ::1 at 2022-04-19 20:52:25 -0700
+Processing by Api::V1::BidsController#create as JSON
+  Parameters: {"bid_price"=>"99", "auction_id"=>"4", "bid"=>{"bid_price"=>"99", "auction_id"=>"4"}}
+  [1m[36mAuction Load (0.4ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/bids_controller.rb:23:in `find_auction'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+  [1m[36mAuction Load (1.1ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+  [1m[36mBid Create (0.8ms)[0m  [1m[32mINSERT INTO "bids" ("bid_price", "user_id", "auction_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["bid_price", 99], ["user_id", 1], ["auction_id", 4], ["created_at", "2022-04-20 03:52:25.519230"], ["updated_at", "2022-04-20 03:52:25.519230"]]
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+Completed 200 OK in 12ms (Views: 0.2ms | ActiveRecord: 3.5ms | Allocations: 4024)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:53:03 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.2ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.4ms | Allocations: 1970)
+
+
+Started GET "/api/v1/auctions/4" for ::1 at 2022-04-19 20:54:43 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.6ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 4]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.7ms | Allocations: 1969)
+
+
+Started GET "/api/v1/auctions/3" for ::1 at 2022-04-19 20:54:53 -0700
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:54:53 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"3"}
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mAuction Load (0.8ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (2.5ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 3]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 7ms (Views: 1.6ms | ActiveRecord: 3.3ms | Allocations: 2945)
+
+
+Started GET "/api/v1/auctions/3" for ::1 at 2022-04-19 20:54:53 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mAuction Load (0.1ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.2ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 3]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.3ms | Allocations: 2215)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 9.3ms | Allocations: 9404)
+
+
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:54:53 -0700
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1071)
+
+
+Started GET "/api/v1/auctions/3" for ::1 at 2022-04-19 20:55:13 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mAuction Load (0.6ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.4ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 3]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 4ms (Views: 1.3ms | ActiveRecord: 1.0ms | Allocations: 1928)
+
+
+Started GET "/api/v1/auctions/3" for ::1 at 2022-04-19 20:55:14 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.2ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 3]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.5ms | Allocations: 1880)
+
+
+Started GET "/api/v1/auctions/3" for ::1 at 2022-04-19 20:55:16 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mAuction Load (0.4ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.2ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 3]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.6ms | Allocations: 1882)
+
+
+Started GET "/api/v1/auctions/3" for ::1 at 2022-04-19 20:55:21 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.2ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 3]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.5ms | Allocations: 1880)
+
+
+Started GET "/api/v1/auctions/2" for ::1 at 2022-04-19 20:55:29 -0700
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:55:29 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"2"}
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 1860)
+
+
+  [1m[36mBid Load (0.3ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 2]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 6ms (Views: 1.5ms | ActiveRecord: 0.6ms | Allocations: 3251)
+
+
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:55:29 -0700
+Started GET "/api/v1/auctions/2" for ::1 at 2022-04-19 20:55:29 -0700
+Processing by Api::V1::UsersController#current as JSON
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1572)
+
+
+  [1m[36mBid Load (0.6ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 2]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 4ms (Views: 1.4ms | ActiveRecord: 0.9ms | Allocations: 2840)
+
+
+Started GET "/api/v1/auctions/2" for ::1 at 2022-04-19 20:55:46 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.2ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 2]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.3ms | Allocations: 1702)
+
+
+Started GET "/api/v1/auctions/2" for ::1 at 2022-04-19 20:55:54 -0700
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:55:54 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"2"}
+Processing by Api::V1::UsersController#current as JSON
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mBid Load (0.2ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 2]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1888)
+
+
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.4ms | Allocations: 3561)
+
+
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:55:54 -0700
+Started GET "/api/v1/auctions/2" for ::1 at 2022-04-19 20:55:54 -0700
+Processing by Api::V1::UsersController#current as JSON
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 1585)
+
+
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.2ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 2]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.4ms | Allocations: 2832)
+
+
+Started GET "/api/v1/auctions/2" for ::1 at 2022-04-19 20:56:21 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.1ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 2]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.3ms | Allocations: 1702)
+
+
+Started POST "/api/v1/auctions/2/bids" for ::1 at 2022-04-19 20:56:48 -0700
+Processing by Api::V1::BidsController#create as JSON
+  Parameters: {"bid_price"=>"55", "auction_id"=>"2", "bid"=>{"bid_price"=>"55", "auction_id"=>"2"}}
+  [1m[36mAuction Load (3.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/bids_controller.rb:23:in `find_auction'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+  [1m[36mBid Create (2.0ms)[0m  [1m[32mINSERT INTO "bids" ("bid_price", "user_id", "auction_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["bid_price", 55], ["user_id", 1], ["auction_id", 2], ["created_at", "2022-04-20 03:56:48.375170"], ["updated_at", "2022-04-20 03:56:48.375170"]]
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+Completed 200 OK in 17ms (Views: 0.3ms | ActiveRecord: 8.1ms | Allocations: 4029)
+
+
+Started GET "/api/v1/auctions/2" for ::1 at 2022-04-19 20:57:25 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mAuction Load (0.1ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (0.2ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 2]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.3ms | Allocations: 1792)
+
+
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:57:42 -0700
+Started GET "/api/v1/auctions/3" for ::1 at 2022-04-19 20:57:42 -0700
+Processing by Api::V1::UsersController#current as JSON
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mAuction Load (0.1ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.3ms | Allocations: 2206)
+
+
+  [1m[36mBid Load (0.8ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 3]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.9ms | Allocations: 3382)
+
+
+Started GET "/api/v1/users/current" for ::1 at 2022-04-19 20:57:42 -0700
+Started GET "/api/v1/auctions/3" for ::1 at 2022-04-19 20:57:42 -0700
+Processing by Api::V1::UsersController#current as JSON
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 1518)
+
+
+  [1m[36mAuction Load (0.6ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (1.0ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 3]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 1.6ms | Allocations: 3008)
+
+
+Started POST "/api/v1/auctions/3/bids" for ::1 at 2022-04-19 20:57:51 -0700
+Processing by Api::V1::BidsController#create as JSON
+  Parameters: {"bid_price"=>"345", "auction_id"=>"3", "bid"=>{"bid_price"=>"345", "auction_id"=>"3"}}
+  [1m[36mAuction Load (0.4ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/bids_controller.rb:23:in `find_auction'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+  [1m[36mBid Create (8.4ms)[0m  [1m[32mINSERT INTO "bids" ("bid_price", "user_id", "auction_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["bid_price", 345], ["user_id", 1], ["auction_id", 3], ["created_at", "2022-04-20 03:57:51.660778"], ["updated_at", "2022-04-20 03:57:51.660778"]]
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/bids_controller.rb:16:in `create'
+Completed 200 OK in 29ms (Views: 0.3ms | ActiveRecord: 13.0ms | Allocations: 4027)
+
+
+Started GET "/api/v1/auctions/3" for ::1 at 2022-04-19 20:58:07 -0700
+Processing by Api::V1::AuctionsController#show as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions" WHERE "auctions"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:33:in `find_auction'
+  [1m[36mBid Load (1.9ms)[0m  [1m[34mSELECT "bids".* FROM "bids" WHERE "bids"."auction_id" = $1[0m  [["auction_id", 3]]
+  ↳ app/controllers/api/v1/auctions_controller.rb:23:in `show'
+Completed 200 OK in 5ms (Views: 1.3ms | ActiveRecord: 2.1ms | Allocations: 1969)
+
+

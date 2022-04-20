@@ -22,6 +22,16 @@ export const Auction = {
 export const Bid = {
     index() {
         return fetch(`${baseUrl}/auctions`).then((res) => res.json());
+    },
+    create(data) {
+        return fetch(`${baseUrl}/auctions/${data.auction_id}/bids`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+            credentials: 'include',
+        }).then((res) => res.json());
     }
 }
 

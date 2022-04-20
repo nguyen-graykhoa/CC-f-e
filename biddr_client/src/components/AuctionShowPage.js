@@ -1,13 +1,13 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
-import { Auction } from '../requests';
+import { Auction, Bid } from '../requests';
 
 const AuctionShowPage = () => {
   const [auction, setAuction]  = useState({})
   const [bids, setBids] = useState([])
   const params = useParams();
-  
+  console.log(`params ${params.id}`)
  
   //let bidsArr = Array.from(bids)
 
@@ -20,8 +20,22 @@ const AuctionShowPage = () => {
          
     });
   },[])
-  const submitBid = () => {
-
+  console.log(`bids ${bids}`)
+  const submitBid = (event) => {
+    event.preventDefault();
+    const fd = new FormData(event.currentTarget);
+    Bid.create({
+      bid_price: fd.get('bid_price'),
+      auction_id: params.id
+    }).then((bid) => {
+        console.log(`bid: ${bid.errors}`);
+        if (bid.errors) {
+            console.log(`BidErrors: ${bid.errors}`, bid.errors);
+        } else {
+            //the history prop contains methods used to navigate
+           // this.props.history.push(`/auctions`);
+        }
+    }); 
   }
 
   return (
@@ -33,7 +47,7 @@ const AuctionShowPage = () => {
           </div>
           <div>
             <form action="" onSubmit={submitBid}>
-              <input type="text" /><span><button>bid</button></span>
+              <input type="text" name="bid_price" /><span><button type='submit'>bid</button></span>
             </form>
           </div>
           <div>

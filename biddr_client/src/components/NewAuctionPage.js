@@ -5,7 +5,7 @@ import NewAuctionForm from './NewAuctionForm';
 const NewAuctionPage = (props) => {
   const createNewAuction = (params) => {
      Auction.create(params).then((auction) => {
-         console.log(`question: ${auction.errors}`);
+         console.log(`auction: ${auction.errors}`);
          if (auction.errors) {
              console.log(`AuctionErrors: ${auction.errors}`, auction.errors);
              
